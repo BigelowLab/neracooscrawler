@@ -1,0 +1,19 @@
+Package: neracooscrawler
+Title: A limited THREDDS crawler for programmatically working with the OpeNDAP
+    data offerings from http://www.neracoos.org/thredds/catalog/GMRI/SATELLITE/NASA/catalog.xml
+Version: 0.1
+Depends:
+    R (>= 3.0)
+Imports:
+    methods,
+    threddscrawler
+Maintainer: Ben Tupper <btupper@bigelow.org>
+Author: Ben Tupper <btupper@bigelow.org>
+URL: https://github.com/btupper/neracooscrawler
+License: GPL (>= 2)
+Collate:
+  days.R
+  neracooscrawler-package.R
+  query.R
+  modisa.R
+  mursst.R
