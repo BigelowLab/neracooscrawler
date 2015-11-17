@@ -170,3 +170,27 @@ MODISA_query <- function(
    }
    invisible(R)   
 }
+
+#' Download one or more MODISA files from the NERACOOS fileServer.
+#'
+#' @export
+#' @param x one or more "DatasetsRefClass" class objects - see MODISA_query
+#' @param dest fully qualified destination directory, if it doesn't exist an 
+#'    attempt is made to create it.
+#' @return logical vector the same length as x.  TRUE means success
+MODISA_download <- function(x, dest = '.'){
+
+   thredds_url <- sapply(x, function(x) x$url)
+   file_url <- sub("catalog", "fileServer", thredds_url)
+   
+   if (!file.exists(dest[1])){
+      stopifnot(dir.create(dest[1], recursive = TRUE))
+   }
+   
+   dst <- file.path(dest[1], basename(file_url))
+   for (i in seq_along(file_url)){
+      ok <- download.file(file_url[i], dst[i])
+   }
+    
+   sapply(dst, file.exists)
+}

@@ -32,7 +32,7 @@
 #'          date_filter = as.POSIXct(c("2008-01-01", "2008-06-01"), format = "%Y-%m-%d") )
 #'    }
 #' @seealso \code{\link{get_monthdays}}, \code{\link{get_8days}} and \code{\link{get_seasondays}}
-MODISA_query <- function(
+MURSST_query <- function(
    top = "http://www.neracoos.org/thredds/catalog/GMRI/SATELLITE/NASA/MUR_SST/catalog.xml",
    region = 'NorthEastShelf', 
    product = 'DailyFiles',
