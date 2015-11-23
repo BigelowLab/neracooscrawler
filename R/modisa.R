@@ -177,8 +177,10 @@ MODISA_query <- function(
 #' @param x one or more "DatasetsRefClass" class objects - see MODISA_query
 #' @param dest fully qualified destination directory, if it doesn't exist an 
 #'    attempt is made to create it.
+#' @param write_mode character, by default 'wb' to support Windows.  See 
+#'    \code{mode} for \code{download.file()}
 #' @return logical vector the same length as x.  TRUE means success
-MODISA_download <- function(x, dest = '.'){
+MODISA_download <- function(x, dest = '.', write_mode = 'wb'){
 
    thredds_url <- sapply(x, function(x) x$url)
    file_url <- sub("catalog", "fileServer", thredds_url)
@@ -189,7 +191,7 @@ MODISA_download <- function(x, dest = '.'){
    
    dst <- file.path(dest[1], basename(file_url))
    for (i in seq_along(file_url)){
-      ok <- download.file(file_url[i], dst[i])
+      ok <- download.file(file_url[i], dst[i], mode = write_mode)
    }
     
    sapply(dst, file.exists)

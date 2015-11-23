@@ -4,13 +4,16 @@
 \alias{MODISA_download}
 \title{Download one or more MODISA files from the NERACOOS fileServer.}
 \usage{
-MODISA_download(x, dest = ".")
+MODISA_download(x, dest = ".", write_mode = "wb")
 }
 \arguments{
 \item{x}{one or more "DatasetsRefClass" class objects - see MODISA_query}
 
 \item{dest}{fully qualified destination directory, if it doesn't exist an
 attempt is made to create it.}
+
+\item{write_mode}{character, by default 'wb' to support Windows.  See
+\code{mode} for \code{download.file()}}
 }
 \value{
 logical vector the same length as x.  TRUE means success
